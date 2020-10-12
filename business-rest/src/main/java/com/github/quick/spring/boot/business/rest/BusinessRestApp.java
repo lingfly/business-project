@@ -14,26 +14,14 @@
  * limitations under the License.
  */
 
-package com.github.quick.spring.boot.business.model;
+package com.github.quick.spring.boot.business.rest;
 
-public class BusinessUser {
-	private String username;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-	private String password;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+@SpringBootApplication
+public class BusinessRestApp {
+	public static void main(String[] args) {
+		SpringApplication.run(BusinessRestApp.class, args);
 	}
 }

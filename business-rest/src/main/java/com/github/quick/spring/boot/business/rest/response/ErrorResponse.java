@@ -14,26 +14,36 @@
  * limitations under the License.
  */
 
-package com.github.quick.spring.boot.business.model;
+package com.github.quick.spring.boot.business.rest.response;
 
-public class BusinessUser {
-	private String username;
 
-	private String password;
+import com.github.quick.spring.boot.business.model.vo.ResultVo;
 
-	public String getUsername() {
-		return username;
+public enum ErrorResponse {
+	SAVE_FAIL(500, "保存失败"),
+	UPDATE_FAIL(500, "更新失败"),
+	;
+
+	private final int code;
+
+	private final String message;
+
+	ErrorResponse(int code, String message) {
+		this.code = code;
+		this.message = message;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public int getCode() {
+		return code;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+
+	public <T> ResultVo<T> ret(T data) {
+		return new ResultVo<>(this.code, this.message, data);
 	}
+
 }

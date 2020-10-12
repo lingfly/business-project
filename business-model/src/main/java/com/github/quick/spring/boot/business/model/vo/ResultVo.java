@@ -14,26 +14,45 @@
  * limitations under the License.
  */
 
-package com.github.quick.spring.boot.business.model;
+package com.github.quick.spring.boot.business.model.vo;
 
-public class BusinessUser {
-	private String username;
+public class ResultVo<T> {
+	private int code;
 
-	private String password;
+	private String message;
 
-	public String getUsername() {
-		return username;
+	private T data;
+
+	public ResultVo() {
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public ResultVo(int code, String message, T data) {
+		this.code = code;
+		this.message = message;
+		this.data = data;
 	}
 
-	public String getPassword() {
-		return password;
+	public int getCode() {
+		return code;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
 	}
 }

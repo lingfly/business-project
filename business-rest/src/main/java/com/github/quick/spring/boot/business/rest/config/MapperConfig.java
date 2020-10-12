@@ -14,26 +14,28 @@
  * limitations under the License.
  */
 
-package com.github.quick.spring.boot.business.model;
+package com.github.quick.spring.boot.business.rest.config;
 
-public class BusinessUser {
-	private String username;
+import org.mybatis.spring.annotation.MapperScan;
 
-	private String password;
+import org.springframework.context.annotation.Configuration;
 
-	public String getUsername() {
-		return username;
-	}
+/**
+ * mapper 配置
+ * @author huifer
+ */
+@Configuration
+@MapperScan("com.github.quick.spring.boot.manage.dao.mapper")
+public class MapperConfig {
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+//	@Bean
+//	public PaginationInnerInterceptor paginationInnerInterceptor() {
+//		PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
+//		paginationInnerInterceptor.setDbType(DbType.MYSQL);
+//		return paginationInnerInterceptor;
+//	}
 
-	public String getPassword() {
-		return password;
-	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
+
 }
