@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.quick.spring.boot.business.dao.mapper.ProductGoodsSaleMapper">
+  <resultMap id="BaseResultMap" type="com.github.quick.spring.boot.business.dao.entity.ProductGoodsSale">
+    <!--@mbg.generated-->
+    <!--@Table product_goods_sale-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="min_quantity" jdbcType="INTEGER" property="minQuantity" />
+    <result column="max_quantity" jdbcType="INTEGER" property="maxQuantity" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="freeze" jdbcType="INTEGER" property="freeze" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, goods_id, min_quantity, max_quantity, `size`, `freeze`, start_time, end_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_goods_sale
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="goods_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.goodsId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="min_quantity = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.minQuantity,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="max_quantity = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.maxQuantity,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`size` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.size,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`freeze` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.freeze,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="start_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.startTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="end_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.endTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_goods_sale
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="goods_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.goodsId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.goodsId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="min_quantity = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.minQuantity != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.minQuantity,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="max_quantity = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.maxQuantity != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.maxQuantity,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`size` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.size != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.size,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`freeze` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.freeze != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.freeze,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="start_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.startTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.startTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="end_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.endTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.endTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into product_goods_sale
+    (id, goods_id, min_quantity, max_quantity, `size`, `freeze`, start_time, end_time
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.goodsId,jdbcType=BIGINT}, #{item.minQuantity,jdbcType=INTEGER}, 
+        #{item.maxQuantity,jdbcType=INTEGER}, #{item.size,jdbcType=INTEGER}, #{item.freeze,jdbcType=INTEGER}, 
+        #{item.startTime,jdbcType=TIMESTAMP}, #{item.endTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.github.quick.spring.boot.business.dao.entity.ProductGoodsSale">
+    <!--@mbg.generated-->
+    insert into product_goods_sale
+    (id, goods_id, min_quantity, max_quantity, `size`, `freeze`, start_time, end_time
+      )
+    values
+    (#{id,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{minQuantity,jdbcType=INTEGER}, 
+      #{maxQuantity,jdbcType=INTEGER}, #{size,jdbcType=INTEGER}, #{freeze,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})
+    on duplicate key update 
+    id = #{id,jdbcType=BIGINT}, 
+    goods_id = #{goodsId,jdbcType=BIGINT}, 
+    min_quantity = #{minQuantity,jdbcType=INTEGER}, 
+    max_quantity = #{maxQuantity,jdbcType=INTEGER}, 
+    `size` = #{size,jdbcType=INTEGER}, 
+    `freeze` = #{freeze,jdbcType=INTEGER}, 
+    start_time = #{startTime,jdbcType=TIMESTAMP}, 
+    end_time = #{endTime,jdbcType=TIMESTAMP}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.github.quick.spring.boot.business.dao.entity.ProductGoodsSale">
+    <!--@mbg.generated-->
+    insert into product_goods_sale
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="minQuantity != null">
+        min_quantity,
+      </if>
+      <if test="maxQuantity != null">
+        max_quantity,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+      <if test="freeze != null">
+        `freeze`,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="minQuantity != null">
+        #{minQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="maxQuantity != null">
+        #{maxQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="freeze != null">
+        #{freeze,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="minQuantity != null">
+        min_quantity = #{minQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="maxQuantity != null">
+        max_quantity = #{maxQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="size != null">
+        `size` = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="freeze != null">
+        `freeze` = #{freeze,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

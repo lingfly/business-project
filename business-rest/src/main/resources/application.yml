@@ -14,7 +14,7 @@ mybatis-plus:
 
 spring:
   application:
-    name: manage-user-rest
+    name: product-rest
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://47.98.225.144:3306/product?useSSL=false&characterEncoding=utf8

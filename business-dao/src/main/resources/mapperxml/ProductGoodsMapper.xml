@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.quick.spring.boot.business.dao.mapper.ProductGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.github.quick.spring.boot.business.dao.entity.ProductGoods">
+    <!--@mbg.generated-->
+    <!--@Table product_goods-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="first_type" jdbcType="VARCHAR" property="firstType" />
+    <result column="second_type" jdbcType="VARCHAR" property="secondType" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="specifications" jdbcType="VARCHAR" property="specifications" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, shop_id, `name`, first_type, second_type, pic, `describe`, unit, specifications
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_goods
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="shop_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.shopId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="first_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.firstType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="second_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.secondType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="pic = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.pic,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`describe` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.describe,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="unit = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.unit,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="specifications = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.specifications,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_goods
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="shop_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.shopId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.shopId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.name != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="first_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.firstType != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.firstType,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="second_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.secondType != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.secondType,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="pic = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.pic != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.pic,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`describe` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.describe != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.describe,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="unit = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.unit != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.unit,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="specifications = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.specifications != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.specifications,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_goods
+    (shop_id, `name`, first_type, second_type, pic, `describe`, unit, specifications)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.shopId,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.firstType,jdbcType=VARCHAR}, 
+        #{item.secondType,jdbcType=VARCHAR}, #{item.pic,jdbcType=VARCHAR}, #{item.describe,jdbcType=VARCHAR}, 
+        #{item.unit,jdbcType=VARCHAR}, #{item.specifications,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.github.quick.spring.boot.business.dao.entity.ProductGoods" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      shop_id,
+      `name`,
+      first_type,
+      second_type,
+      pic,
+      `describe`,
+      unit,
+      specifications,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{shopId,jdbcType=BIGINT},
+      #{name,jdbcType=VARCHAR},
+      #{firstType,jdbcType=VARCHAR},
+      #{secondType,jdbcType=VARCHAR},
+      #{pic,jdbcType=VARCHAR},
+      #{describe,jdbcType=VARCHAR},
+      #{unit,jdbcType=VARCHAR},
+      #{specifications,jdbcType=VARCHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      shop_id = #{shopId,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      first_type = #{firstType,jdbcType=VARCHAR},
+      second_type = #{secondType,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      `describe` = #{describe,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      specifications = #{specifications,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.github.quick.spring.boot.business.dao.entity.ProductGoods" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="firstType != null">
+        first_type,
+      </if>
+      <if test="secondType != null">
+        second_type,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="describe != null">
+        `describe`,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="specifications != null">
+        specifications,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="firstType != null">
+        #{firstType,jdbcType=VARCHAR},
+      </if>
+      <if test="secondType != null">
+        #{secondType,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="specifications != null">
+        #{specifications,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="firstType != null">
+        first_type = #{firstType,jdbcType=VARCHAR},
+      </if>
+      <if test="secondType != null">
+        second_type = #{secondType,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        `describe` = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="specifications != null">
+        specifications = #{specifications,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

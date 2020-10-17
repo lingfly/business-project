@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.quick.spring.boot.business.dao.mapper.ProductShopEvaluateMapper">
+  <resultMap id="BaseResultMap" type="com.github.quick.spring.boot.business.dao.entity.ProductShopEvaluate">
+    <!--@mbg.generated-->
+    <!--@Table product_shop_evaluate-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    <result column="service_grade" jdbcType="SMALLINT" property="serviceGrade" />
+    <result column="describe_grade" jdbcType="SMALLINT" property="describeGrade" />
+    <result column="price_grade" jdbcType="SMALLINT" property="priceGrade" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="consumer_id" jdbcType="BIGINT" property="consumerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, shop_id, service_grade, describe_grade, price_grade, content, consumer_id
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_shop_evaluate
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="shop_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.shopId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="service_grade = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.serviceGrade,jdbcType=SMALLINT}
+        </foreach>
+      </trim>
+      <trim prefix="describe_grade = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.describeGrade,jdbcType=SMALLINT}
+        </foreach>
+      </trim>
+      <trim prefix="price_grade = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.priceGrade,jdbcType=SMALLINT}
+        </foreach>
+      </trim>
+      <trim prefix="content = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.content,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="consumer_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.consumerId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_shop_evaluate
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="shop_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.shopId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.shopId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="service_grade = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.serviceGrade != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.serviceGrade,jdbcType=SMALLINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="describe_grade = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.describeGrade != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.describeGrade,jdbcType=SMALLINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="price_grade = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.priceGrade != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.priceGrade,jdbcType=SMALLINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="content = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.content != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.content,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="consumer_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.consumerId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.consumerId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_shop_evaluate
+    (shop_id, service_grade, describe_grade, price_grade, content, consumer_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.shopId,jdbcType=BIGINT}, #{item.serviceGrade,jdbcType=SMALLINT}, #{item.describeGrade,jdbcType=SMALLINT}, 
+        #{item.priceGrade,jdbcType=SMALLINT}, #{item.content,jdbcType=VARCHAR}, #{item.consumerId,jdbcType=BIGINT}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.github.quick.spring.boot.business.dao.entity.ProductShopEvaluate" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_shop_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      shop_id,
+      service_grade,
+      describe_grade,
+      price_grade,
+      content,
+      consumer_id,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{shopId,jdbcType=BIGINT},
+      #{serviceGrade,jdbcType=SMALLINT},
+      #{describeGrade,jdbcType=SMALLINT},
+      #{priceGrade,jdbcType=SMALLINT},
+      #{content,jdbcType=VARCHAR},
+      #{consumerId,jdbcType=BIGINT},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      shop_id = #{shopId,jdbcType=BIGINT},
+      service_grade = #{serviceGrade,jdbcType=SMALLINT},
+      describe_grade = #{describeGrade,jdbcType=SMALLINT},
+      price_grade = #{priceGrade,jdbcType=SMALLINT},
+      content = #{content,jdbcType=VARCHAR},
+      consumer_id = #{consumerId,jdbcType=BIGINT},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.github.quick.spring.boot.business.dao.entity.ProductShopEvaluate" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_shop_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="serviceGrade != null">
+        service_grade,
+      </if>
+      <if test="describeGrade != null">
+        describe_grade,
+      </if>
+      <if test="priceGrade != null">
+        price_grade,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="consumerId != null">
+        consumer_id,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="serviceGrade != null">
+        #{serviceGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="describeGrade != null">
+        #{describeGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="priceGrade != null">
+        #{priceGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="consumerId != null">
+        #{consumerId,jdbcType=BIGINT},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="serviceGrade != null">
+        service_grade = #{serviceGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="describeGrade != null">
+        describe_grade = #{describeGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="priceGrade != null">
+        price_grade = #{priceGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="consumerId != null">
+        consumer_id = #{consumerId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
